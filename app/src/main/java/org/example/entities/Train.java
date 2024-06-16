@@ -1,7 +1,12 @@
 package org.example.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import java.util.AbstractMap;
 import java.util.List;
 import java.util.Map;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 
 public class Train {
     private String trainID;
@@ -61,6 +66,7 @@ public class Train {
     public void setStations(List<String> stations) {
         this.stations = stations;
     }
+
 
     public String getTrainInfo(){
         return String.format("Train ID: %s Train No: %s", trainID, trainNo);

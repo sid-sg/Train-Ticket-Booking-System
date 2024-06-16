@@ -1,0 +1,49 @@
+[
+  {
+    "trainID": "shatabdi33545",
+    "trainNo": "2178",
+    "seats": [
+      [1, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0],
+      [0, 0, 0, 1, 0],
+      [0, 1, 0, 0, 0]
+    ],
+    "stationTimes": {
+      "Guwahati": "22:50",
+      "Howrah": "5:00",
+      "Kharagpur": "9:30",
+      "Bhubaneswar": "14:40"
+
+    },
+    "stations": [
+      "guwahati",
+      "howrah",
+      "kharagpur",
+      "bhubaneswar"
+    ]
+  },
+  {
+    "trainID": "rajdhani12345",
+    "trainNo": "1367",
+    "seats": [
+      [1, 0, 0, 1, 0],
+      [0, 1, 0, 0, 0],
+      [0, 0, 0, 0, 0],
+      [0, 1, 0, 1, 1]
+    ],
+    "stationTimes": {
+      "Guwahati": "22:50",
+      "Howrah": "5:00",
+      "Patna": "9:30",
+      "Gorakhpur": "14:40",
+      "New Delhi": "18:15"
+    },
+    "stations": [
+      "guwahati",
+      "howrah",
+      "patna",
+      "gorakhpur",
+      "new delhi"
+    ]
+  }
+]

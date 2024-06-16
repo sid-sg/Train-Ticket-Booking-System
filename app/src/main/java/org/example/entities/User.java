@@ -1,30 +1,60 @@
 package org.example.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.List;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class User {
     private String userID;
-    private String name;
+    private String username;
+    private String firstName;
+    private String lastName;
+    private String plainPassword;
     private String hashedPassword;
     private List<Ticket> ticketsBooked;
 
-    public User(String userID, String name, String hashedPassword, List<Ticket> ticketsBooked){
-        this.userID=userID;
-        this.name=name;
-        this.hashedPassword=hashedPassword;
-        this.ticketsBooked=ticketsBooked;
+    public User(String userID, String username, String firstName, String lastName, String plainPassword, String hashedPassword, List<Ticket> ticketsBooked){
+        this.userID = userID;
+        this.username = username;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.plainPassword = plainPassword;
+        this.hashedPassword = hashedPassword;
+        this.ticketsBooked = ticketsBooked;
+    }
+
+    public User(String username,String plainPassword ,String hashedPassword){
+        this.username = username;
+        this.plainPassword = plainPassword;
+        this.hashedPassword = hashedPassword;
     }
 
     public User(){}
 
     // Getters
-
     public String getUserID(){
         return this.userID;
     }
 
+    public String getUsername(){
+        return this.username;
+    }
+
+    public String getFirstName() {
+        return this.firstName;
+    }
+
+    public String getLastName() {
+        return this.lastName;
+    }
+
     public String getName(){
-        return this.name;
+        return this.firstName + " " + this.lastName;
+    }
+
+    public String getPlainPassword(){
+        return this.plainPassword;
     }
 
     public String getHashedPassword(){
@@ -36,13 +66,24 @@ public class User {
     }
 
     // Setters
-
     public void setUserID(String userID){
         this.userID = userID;
     }
 
-    public void setName(String name){
-        this.name = name;
+    public void setUsername(String username){
+        this.username = username;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setPlainPassword(String plainPassword){
+        this.plainPassword = plainPassword;
     }
 
     public void setHashedPassword(String hashedPassword){
@@ -54,11 +95,14 @@ public class User {
     }
 
     public void printTickets(){
-        for(int i=0;i<ticketsBooked.size();i++){
-            System.out.println(ticketsBooked.get(i).getTicketInfo());
+        System.out.println("in printTickets");
+        if((this.ticketsBooked)==null){
+            System.out.println("No tickets booked");
+            return;
+        }
+
+        for (Ticket ticket : this.ticketsBooked) {
+            System.out.println(ticket.getTicketInfo());
         }
     }
-
-
 }
-

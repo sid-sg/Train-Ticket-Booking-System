@@ -1,5 +1,8 @@
 package org.example.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Ticket {
     private String ticketID;
     private String userID;
@@ -44,6 +47,10 @@ public class Ticket {
         return train;
     }
 
+    public String getTicketInfo(){
+        return String.format("Ticket ID: %s belongs to User %s from %s to %s on %s", ticketID, userID, source, destination, dateOfTravel);
+    }
+
     // Setters
     public void setTicketID(String ticketID) {
         this.ticketID = ticketID;
@@ -69,8 +76,6 @@ public class Ticket {
         this.train = train;
     }
 
-    public String getTicketInfo(){
-        return String.format("Ticket ID: %s belongs to User %s from %s to %s on %s", ticketID, userID, source, destination, dateOfTravel);
-    }
+
 
 }
