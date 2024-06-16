@@ -17,9 +17,6 @@ import java.util.UUID;
 
 public class App {
 
-
-    //add price attribute in train
-
     public static void main(String[] args) throws IOException {
 
         System.out.println("Welcome to train ticket booking system");
@@ -126,8 +123,28 @@ public class App {
                     break;
 
                 case 5:
-
+                    List<List<Integer>> trainSeats = UserBookingService.fetchSeats(trainSelected);
+                    for(int i=0;i<trainSeats.size();i++){
+                        for(int j=0;j<trainSeats.get(0).size();j++){
+                            System.out.print(trainSeats.get(i).get(j) + " ");
+                        }
+                        System.out.print("\n");
+                    }
+                    System.out.println("1: filled seat, 0: available seat");
+                    System.out.println("Select seat in row(1-5) & column(1-5) ");
+                    int row,col;
+                    System.out.println("Enter row: ");
+                    row = sc.nextInt();
+                    System.out.println("Enter column: ");
+                    col = sc.nextInt();
+                    if(userBookingService.bookSeat(trainSelected, row, col)){
+                        System.out.println("Seat successfully booked");
+                    }
+                    else{
+                        System.out.println("Booking failed");
+                    }
                     break;
+
                 default:
                     break;
 

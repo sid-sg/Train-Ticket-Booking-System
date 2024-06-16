@@ -2,6 +2,8 @@ package org.example.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.AbstractMap;
 import java.util.List;
 import java.util.Map;
@@ -24,6 +26,8 @@ public class Train {
         this.stationTimes = stationTimes;
         this.stations = stations;
     }
+
+
 
     // Getters
     public String getTrainID() {
@@ -57,6 +61,7 @@ public class Train {
 
     public void setSeats(List<List<Integer>> seats) {
         this.seats = seats;
+
     }
 
     public void setStationTimes(Map<String, String> stationTimes) {
@@ -71,4 +76,6 @@ public class Train {
     public String getTrainInfo(){
         return String.format("Train ID: %s Train No: %s", trainID, trainNo);
     }
+
+
 }

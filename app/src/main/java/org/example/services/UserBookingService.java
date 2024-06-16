@@ -8,13 +8,13 @@ import org.example.util.UserServiceUtil;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
 public class UserBookingService {
 
     private User user;
+    private TrainService trainService = new TrainService();
     private List<User> userList;
     private static final ObjectMapper objectMapper = new ObjectMapper();
 
@@ -31,7 +31,7 @@ public class UserBookingService {
         loadUsers();
     }
 
-    public UserBookingService(Optional<User> foundUser) {}
+    public UserBookingService(Optional<User> foundUser) throws IOException {}
 
     public void loadUsers() throws IOException {
         File users = new File(usersPath);
@@ -71,6 +71,29 @@ public class UserBookingService {
 
     public void fetchBooking(){
         user.printTickets();
+    }
+
+    public static List<List<Integer>> fetchSeats(Train train){
+        List<List<Integer>> seats = train.getSeats();
+        return seats;
+    }
+
+    public Boolean bookSeat (Train train, Integer row, Integer col) throws IOException {
+        List<List<Integer>> trainSeats = train.getSeats();
+        if(row<=0 || col<=0){
+            System.out.println("Enter valid row and column");
+            return false;
+        }
+        if(trainSeats.get(row-1).get(col-1) == 1){
+            System.out.println("Seat already booked");
+            return false;
+        }
+
+        trainSeats.get(row-1).set(col-1,1);
+        train.setSeats(trainSeats);
+        trainService.addTrain(train);
+
+        return true;
     }
 
     public void cancelBooking(String ticketID){
