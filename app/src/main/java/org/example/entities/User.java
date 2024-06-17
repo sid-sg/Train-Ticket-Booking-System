@@ -95,13 +95,12 @@ public class User {
     }
 
     public void printTickets(){
-        System.out.println("in printTickets");
-        if((this.ticketsBooked)==null){
+        if(ticketsBooked == null || ticketsBooked.isEmpty()){
             System.out.println("No tickets booked");
             return;
         }
 
-        for (Ticket ticket : this.ticketsBooked) {
+        for (Ticket ticket : ticketsBooked) {
             System.out.println(ticket.getTicketInfo());
         }
     }

@@ -18,7 +18,8 @@ public class TrainService {
     private Train train;
     private List<Train> trainList;
     private static final ObjectMapper objectMapper = new ObjectMapper();
-    private static final String trainsPath = "C:\\Users\\KIIT\\Desktop\\JAVA DEV\\ticketBooking\\app\\src\\main\\java\\org\\example\\localDB\\Trains.json";
+    private static final String trainsPath = "app/src/main/java/org/example/localDB/Trains.json";
+
 
     public TrainService() throws IOException {
         File trains = new File(trainsPath);

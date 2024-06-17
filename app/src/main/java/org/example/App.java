@@ -73,6 +73,7 @@ public class App {
                         userBookingService = new UserBookingService(userToLogin);
                         if(userBookingService.loginUser()){
                             System.out.println("Logged in");
+                            userBookingService.updateUserInfo(userToLogin);
                         }
                         else{
                             System.out.println("Something went wrong");
@@ -90,6 +91,9 @@ public class App {
                     String source = sc.next();
                     System.out.println("Enter destination station: ");
                     String destination = sc.next();
+                    System.out.println("Enter date of travel (in DD/MM/YYYY format): ");
+                    String date = sc.next();
+                    userBookingService.setDate(date);
 
                     List<Train> trains = userBookingService.getTrains(source, destination);
 
@@ -143,6 +147,19 @@ public class App {
                     else{
                         System.out.println("Booking failed");
                     }
+                    break;
+
+                case 6:
+                    System.out.println("Enter ticket ID which you want to cancel: ");
+                    String ticketId = sc.next();
+                    Boolean cancelled = userBookingService.cancelBooking(ticketId);
+                    if(cancelled){
+                        System.out.println("Booking cancelled");
+                    }
+                    else{
+                        System.out.println("Something went wrong");
+                    }
+
                     break;
 
                 default:
